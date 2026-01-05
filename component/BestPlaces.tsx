@@ -1,0 +1,106 @@
+"use client";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import Image from "next/image";
+import Link from "next/link";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
+interface Place {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+const places: Place[] = [
+  {
+    title: "Jhargram Palace Heritage",
+    description: "Step into the regal past of Jhargram as we unravel...",
+    image:
+      "https://wip.tezcommerce.com:3304/admin/iUdyog/blog/71/1704180479992.jpg",
+    link: "https://adda.net.in/blog-details/jhargram-palace-heritage",
+  },
+  {
+    title:
+      "Gangani: Garbetha's Hidden Jewel - A Tranquil Retreat and Tourist Attraction",
+    description: "Nestled in the heart of Garbetha, Gangani emerges...",
+    image:
+      "https://wip.tezcommerce.com:3304/admin/iUdyog/blog/71/1704180237621.jpg",
+    link: "https://adda.net.in/blog-details/gangani:-garbetha's-hidden-jewel---a-tranquil-retreat-and-tourist-attraction",
+  },
+  {
+    title: "Exploring the Enchanting Terracotta Temples",
+    description: "A Journey through Pathra, Paschim Midnapore’s hidden...",
+    image:
+      "https://wip.tezcommerce.com:3304/admin/iUdyog/blog/71/1700216426706.jpg",
+    link: "https://adda.net.in/blog-details/exploring-the-enchanting-terracotta-temples",
+  },
+  {
+    title:
+      "Exploring the Divine Beauty of Karnagarh Debi Mahamaya Temple in Midnapore",
+    description: "Introduction Nestled amidst the serene landscapes...",
+    image:
+      "https://wip.tezcommerce.com:3304/admin/iUdyog/blog/71/1700215627743.jpg",
+    link: "https://adda.net.in/blog-details/exploring-the-divine-beauty-of-karnagarh-debi-mahamaya-temple-in-midnapore",
+  },
+  {
+    title: "Siddheshwari Kali Mandir in Midnapore: A Spiritual Oasis",
+    description: "Siddheshwari Kali Mandir in Midnapore: A Spiritual...",
+    image:
+      "https://wip.tezcommerce.com:3304/admin/iUdyog/blog/71/1700215775301.jpg",
+    link: "https://adda.net.in/blog-details/exploring-the-tranquil-beauty-of-gopegarh-ecopark",
+  },
+];
+
+export default function BestPlaces() {
+  return (
+    <section className="best_place_wrap">
+      <div className="container">
+        <div className="sec_title_btn">
+          <div>
+            <h2>The best places to visit</h2>
+            <h3>
+              Archeological and Astonishing places are to be expolerd by you.
+            </h3>
+          </div>
+        </div>
+
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          className="slide_style_one best_place_slide"
+          spaceBetween={24}
+          slidesPerView={2}
+          navigation
+          autoplay={{ delay: 4000 }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+          }}>
+          {places.map((place, index) => (
+            <SwiperSlide key={index}>
+              <Link href={place.link} className="exp_item">
+                <figure>
+                  <Image
+                    src={place.image}
+                    alt={place.title}
+                    width={600}
+                    height={400}
+                  />
+                  <figcaption></figcaption>
+                </figure>
+
+                <div className="exp_det">
+                  <h3>{place.title}</h3>
+                  <p>{place.description}</p>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
+  );
+}

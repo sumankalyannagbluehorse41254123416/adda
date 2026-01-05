@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import "../public/styles/about.css";
+import "../public/styles/bootstrap.min.css";
+import "../public/styles/main.css";
+import "../public/styles/owl.carousel.css";
+import "../public/styles/owl.theme.default.css";
+import "../public/styles/slick-theme.css";
+import "../public/styles/slick.css";
+import Header from "@/component/Header";
+import Footer from "@/component/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,7 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

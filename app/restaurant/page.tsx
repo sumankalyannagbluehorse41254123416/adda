@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Cta_wrap from "@/component/Cta_wrap";
 
 const categories = [
   { key: "Indian", title: "Indian", img: "1699266093335.jpg" },
@@ -184,21 +185,7 @@ export default function MenuPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section
-        className="cta_wrap"
-        style={{ backgroundImage: "url(/assets/img/cta_bg.jpg)" }}>
-        <div className="container">
-          <div className="cta_inner">
-            <p>To book now Contact at</p>
-            <h2>8436001000</h2>
-            <a href="tel:+918436001000">
-              <i className="ri-phone-fill"></i> Call Now
-            </a>
-          </div>
-        </div>
-      </section>
+      <Cta_wrap />
     </>
   );
 }

@@ -1,31 +1,101 @@
 "use client";
 
+import ContactMap from "@/component/ContactMap";
+import { submitFormData } from "@/lib/contact";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Contact() {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    msg: "",
+    message: "",
   });
 
-  const [successMsg, setSuccessMsg] = useState("");
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.msg) {
-      return;
+  const validateForm = () => {
+    const newErrors = {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+      isValid = false;
     }
-    console.log("Form Data:", form);
-    setSuccessMsg("Your message has been sent successfully!");
-    setForm({ name: "", email: "", subject: "", msg: "" });
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+      isValid = false;
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    if (!validateForm()) return;
+
+    try {
+      setIsSubmitting(true);
+
+      await submitFormData(
+        {},
+        "d7e1dbb2-b461-4e68-9ce3-fae73396e979",
+        formData
+      );
+
+      toast.success("Submitted Your Message");
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Something went wrong!");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,11 +114,9 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="contact_wrap">
         <div className="container">
           <div className="row">
-            {/* Form */}
             <div className="col-lg-8 col-12">
               <form className="con_form" onSubmit={handleSubmit}>
                 <h3>Write a Message</h3>
@@ -62,10 +130,12 @@ export default function Contact() {
                   <input
                     type="text"
                     name="name"
-                    value={form.name}
+                    value={formData.name}
                     onChange={handleChange}
-                    required
                   />
+                  {errors.name && (
+                    <span className="text-danger">{errors.name}</span>
+                  )}
                 </div>
 
                 <div className="fieldrow">
@@ -73,10 +143,12 @@ export default function Contact() {
                   <input
                     type="email"
                     name="email"
-                    value={form.email}
+                    value={formData.email}
                     onChange={handleChange}
-                    required
                   />
+                  {errors.email && (
+                    <span className="text-danger">{errors.email}</span>
+                  )}
                 </div>
 
                 <div className="fieldrow">
@@ -84,61 +156,39 @@ export default function Contact() {
                   <input
                     type="text"
                     name="subject"
-                    value={form.subject}
+                    value={formData.subject}
                     onChange={handleChange}
                   />
+                  {errors.subject && (
+                    <span className="text-danger">{errors.subject}</span>
+                  )}
                 </div>
 
                 <div className="fieldrow">
                   <label>Message</label>
                   <textarea
-                    name="msg"
-                    value={form.msg}
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
-                    required
                   />
+                  {errors.message && (
+                    <span className="text-danger">{errors.message}</span>
+                  )}
                 </div>
 
-                <button type="submit">Submit Your Message</button>
+                <button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit Your Message"}
+                </button>
 
-                {successMsg && (
+                {/* {successMessage && (
                   <div className="text-success text-center mt-3">
-                    {successMsg}
+                    {successMessage}
                   </div>
-                )}
+                )} */}
               </form>
             </div>
 
-            {/* Map + Info */}
-            <div className="col-lg-4 col-12">
-              <div className="con_map">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2955.6758489293506!2d87.31385824855337!3d22.419994051625714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1d5b45ecaeeb11%3A0xc8b9703704134727!2z4KaGZGRhIElubg!5e0!3m2!1sen!2sin!4v1699180239487!5m2!1sen!2sin"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-
-              <ul className="con_info">
-                <li>
-                  <i className="ri-map-pin-2-line"></i>
-                  Judges Court Rd, Keranitola, Midnapore, West Bengal 721101
-                </li>
-                <li>
-                  <i className="ri-phone-fill"></i>
-                  <a href="tel:+918436008000">8436008000</a>
-                </li>
-                <li>
-                  <i className="ri-mail-line"></i>
-                  <a href="mailto:info@adda.net.in">info@adda.net.in</a>
-                </li>
-                <li>
-                  <i className="ri-earth-line"></i>
-                  <a href="https://adda.net.in/" target="_blank">
-                    adda.net.in
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ContactMap />
           </div>
         </div>
       </section>

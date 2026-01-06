@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Cta_wrap from "@/component/Cta_wrap";
+import { fetchPageData } from "@/lib/page";
 
 const categories = [
   { key: "Indian", title: "Indian", img: "1699266093335.jpg" },
@@ -86,7 +87,11 @@ type CategoryKey = keyof typeof menuData;
 
 export default function MenuPage() {
   const [activeTab, setActiveTab] = useState<CategoryKey>("Indian");
-
+  useEffect(() => {
+    const UID = "33b55d9f-33bd-49b5-8120-b495b47c70e8";
+    const res = fetchPageData({ uid: UID });
+    console.log("res******************", res);
+  });
   return (
     <>
       {/* Banner */}

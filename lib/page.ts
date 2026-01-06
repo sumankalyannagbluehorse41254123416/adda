@@ -154,6 +154,7 @@ export interface Page {
 export interface ApiResponse {
   status: boolean;
   pagedata: Page;
+  json: any;
   pageItemdataWithSubsection: Section[];
 }
 

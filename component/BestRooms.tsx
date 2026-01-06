@@ -129,7 +129,7 @@ export default function BestRooms() {
           navigation
           autoplay={{ delay: 3000 }}
           loop
-          spaceBetween={20}
+          spaceBetween={10}
           slidesPerView={4}
           breakpoints={{
             0: { slidesPerView: 1 },

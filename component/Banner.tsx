@@ -79,7 +79,8 @@ export default async function Banner() {
         <div className="banner_inner">
           <figure>
             <Image
-              src={banner?.desktopImage || "/images/noFoundimages.jpeg"}
+              // src={banner?.desktopImage || "/images/noFoundimages.jpeg"}
+              src={"/assest/images/hero.jpg"}
               alt={banner?.title || "Banner Image"}
               width={1600}
               height={800}

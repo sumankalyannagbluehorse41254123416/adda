@@ -283,7 +283,7 @@ export default async function AboutPage() {
   const UID = "fbb72dd1-d596-42eb-b70d-58a1c9add47c";
   const res = await fetchPageData({ uid: UID });
 
-  const page: PageData | undefined = res?.pagedata;
+  const page = res?.pagedata;
 
   const sections: PageSection[] =
     res?.pageItemdataWithSubsection?.map((s: any) => ({

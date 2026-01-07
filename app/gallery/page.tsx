@@ -132,6 +132,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fetchPageData, Section } from "@/lib/page";
+import Lightbox from "@/component/Lightbox";
 
 const PAGE_UID = "b98b0e57-5335-4bec-8a5e-0c984d23d889";
 
@@ -139,6 +140,10 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState<Section[]>([]);
   const [activeTab, setActiveTab] = useState<string>("All");
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -153,6 +158,7 @@ export default function Gallery() {
 
     loadData();
   }, []);
+
   const tabs = useMemo(() => {
     const uniqueTitles = Array.from(
       new Set(sections.map((item) => item.title))
@@ -164,6 +170,10 @@ export default function Gallery() {
     activeTab === "All"
       ? sections
       : sections.filter((item) => item.title === activeTab);
+
+  const images = filteredItems
+    .map((item) => item.image)
+    .filter(Boolean) as string[];
 
   if (loading) return null;
 
@@ -205,11 +215,15 @@ export default function Gallery() {
             {/* Content */}
             <div className="tabcontent">
               <div className="row">
-                {filteredItems.map((item) => (
+                {filteredItems.map((item, index) => (
                   <GalleryItem
                     key={item.id}
                     img={item.image || ""}
                     label={item.title}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      setLightboxOpen(true);
+                    }}
                   />
                 ))}
               </div>
@@ -217,15 +231,33 @@ export default function Gallery() {
           </div>
         </div>
       </section>
+      {lightboxOpen && (
+        <Lightbox
+          images={images}
+          index={currentIndex}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={() =>
+            setCurrentIndex((i) => (i - 1 + images.length) % images.length)
+          }
+          onNext={() => setCurrentIndex((i) => (i + 1) % images.length)}
+        />
+      )}
     </>
   );
 }
-function GalleryItem({ img, label }: { img: string; label: string }) {
-  if (!img) return null;
 
+function GalleryItem({
+  img,
+  label,
+  onClick,
+}: {
+  img: string;
+  label: string;
+  onClick: () => void;
+}) {
   return (
     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-      <a data-lightbox="gallery" href={img} className="exp_item g_item">
+      <div className="exp_item g_item" onClick={onClick}>
         <figure>
           <img src={img} alt={label} />
           <figcaption>
@@ -235,7 +267,7 @@ function GalleryItem({ img, label }: { img: string; label: string }) {
             </div>
           </figcaption>
         </figure>
-      </a>
+      </div>
     </div>
   );
 }

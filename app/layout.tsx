@@ -10,6 +10,7 @@ import "../public/styles/slick-theme.css";
 import "../public/styles/slick.css";
 import Header from "@/component/Header";
 import Footer from "@/component/Footer";
+import { ToastContainer } from "react-toastify";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,6 +34,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ToastContainer
+          position="top-center"
+          autoClose={4000}
+          style={{ zIndex: "9999" }}
+        />
         <Header />
         {children}
         <Footer />

@@ -4247,6 +4247,7 @@ strong {
   border-radius: 3px;
   padding: 10px 15px;
   transition: all 250ms ease-in-out;
+  background: transparent;
 }
 
 .contact_wrap .con_form .fieldrow input:focus,

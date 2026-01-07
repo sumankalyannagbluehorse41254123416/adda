@@ -982,7 +982,7 @@ header.header_sticky {
 @media (max-width: 575px) {
   .banner_wrap {
     padding: 0;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
 
   .banner_wrap .container {
@@ -1818,12 +1818,12 @@ header.header_sticky {
   overflow: hidden;
 }
 
-.stay_wrap .stay_inner .left_stay #service_thumbs {
+/* .stay_wrap .stay_inner .left_stay #service_thumbs {
   position: absolute;
   top: 50%;
   left: 0;
   transform: translate(0, -50%);
-}
+} */
 
 .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage,
 .stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper {
@@ -1835,13 +1835,14 @@ header.header_sticky {
 .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage .owl-item,
 .stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper .swiper-slide-visible.swiper-slide-fully-visible {
   height: 100px;
-  width: 100px !important;
+  /* width: 100px !important; */
+  width: 100% !important;
   position: relative;
   background-color: var(--white);
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 300ms ease-in-out;
+  /* transition: all 300ms ease-in-out; */
 }
 
 .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage .owl-item.current,
@@ -1852,7 +1853,7 @@ header.header_sticky {
 
 .stay_wrap .stay_inner .left_stay #service_thumbs .stay_thumb {
   height: 100px;
-  width: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

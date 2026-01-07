@@ -338,7 +338,7 @@ export default async function RoomsPage() {
                     <div className="ritem_right">
                       {price && (
                         <h4>
-                          <span>{price}</span> PER NIGHT
+                          <span>₹ {price}</span>  PER NIGHT
                         </h4>
                       )}
                       <a href="tel:+918436008000">

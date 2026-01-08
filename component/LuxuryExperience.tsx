@@ -66,12 +66,6 @@
 //   );
 // }
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 3689095f11594c6b74922fb358e55229e77ebe7a
 "use client";
 
 import Image from "next/image";

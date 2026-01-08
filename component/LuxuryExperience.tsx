@@ -66,29 +66,56 @@
 //   );
 // }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 3689095f11594c6b74922fb358e55229e77ebe7a
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 
+import { fetchPageData, Section } from "@/lib/page";
+
 export default function LuxuryExperience() {
-  const images = [
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823193342.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1699860205128.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1699860145182.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823262031.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823275644.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823299732.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823312761.jpg",
-    "https://wip.tezcommerce.com:3304/admin/module/71/1698823342855.jpg",
-  ];
+  const [loading, setLoading] = useState(true);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [gallery, setGallery] = useState<Section[]>([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await fetchPageData({
+          uid: "enjoy-a-luxury-experience",
+        });
+
+        setTitle(res.pagedata.title);
+        setDescription(res.pagedata.description || "");
+
+        setGallery(
+          [...res.pageItemdataWithSubsection].sort(
+            (a, b) => a.section_sequence - b.section_sequence
+          )
+        );
+      } catch (error) {
+        console.error("Luxury Experience Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading || gallery.length === 0) return null;
 
   return (
     <section className="lux_exp_wrap">
@@ -101,21 +128,19 @@ export default function LuxuryExperience() {
       </button>
 
       <div className="container">
-        {/* Title */}
+        {/* TITLE */}
         <div className="sec_title_btn">
           <div>
-            <h2>Enjoy a Luxury Experience</h2>
-            <h3>
-              Browse Our Gallery for a Visual Delight of Luxury Experiences
-            </h3>
+            <h2>{title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: description }} />
           </div>
 
-          <Link href="https://adda.net.in/gallery" className="more_btn">
+          <Link href="/gallery" className="more_btn">
             <span>View Full Gallery</span>
           </Link>
         </div>
 
-        {/* Slider */}
+        {/* SLIDER */}
         <Swiper
           modules={[Navigation, Autoplay]}
           navigation={{
@@ -132,13 +157,19 @@ export default function LuxuryExperience() {
             768: { slidesPerView: 3 },
             1200: { slidesPerView: 4 },
           }}
-          className="slide_style_one lux_exp_slide"
-        >
-          {images.map((img, index) => (
-            <SwiperSlide key={index}>
+          className="slide_style_one lux_exp_slide">
+          {gallery.map((item) => (
+            <SwiperSlide key={item.id}>
               <Link href="#" className="exp_item">
                 <figure>
-                  <Image src={img} alt="Adda Inn" width={400} height={300} />
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={title}
+                      width={400}
+                      height={300}
+                    />
+                  )}
                 </figure>
               </Link>
             </SwiperSlide>

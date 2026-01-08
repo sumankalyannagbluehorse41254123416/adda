@@ -8,9 +8,12 @@ import "../public/styles/owl.carousel.css";
 import "../public/styles/owl.theme.default.css";
 import "../public/styles/slick-theme.css";
 import "../public/styles/slick.css";
+import "../public/styles/lightbox.css";
+
 import Header from "@/component/Header";
 import Footer from "@/component/Footer";
 import { ToastContainer } from "react-toastify";
+import ClientLoaderEffect from "@/component/ClientLoaderEffect";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,15 +36,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ToastContainer
           position="top-center"
           autoClose={4000}
           style={{ zIndex: "9999" }}
         />
-        <Header />
-        {children}
-        <Footer />
+        <ClientLoaderEffect>
+          <Header />
+          {children}
+          <Footer />
+        </ClientLoaderEffect>
       </body>
     </html>
   );

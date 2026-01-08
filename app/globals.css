@@ -30,6 +30,18 @@ body {
   margin: 0;
 }
 
+/*koushik css*/
+.room_wrap .ritem_right h4 span::before {
+    content: none !important;
+    margin-right: 5px;
+    font-size: 28px;
+}
+.rl_inner .rl_item .rl_con ul li:last-child:before{
+    content: none !important;
+}
+
+/*koushik css end*/
+
 a {
   color: inherit;
   text-decoration: none;

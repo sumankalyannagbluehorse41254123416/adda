@@ -1054,7 +1054,7 @@ header.header_sticky {
 @media (max-width: 575px) {
   .banner_wrap {
     padding: 0;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
 
   .banner_wrap .container {

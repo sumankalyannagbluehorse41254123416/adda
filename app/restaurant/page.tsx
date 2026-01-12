@@ -218,9 +218,6 @@ import Cta_wrap from "@/component/Cta_wrap";
 import { fetchBlogData } from "@/lib/blog";
 import { fetchPageData } from "@/lib/page";
 import Link from "next/link";
-
-/* ---------------- TYPES ---------------- */
-
 interface MenuItem {
   title: string;
   price: string;
@@ -235,15 +232,10 @@ interface PageData {
   description?: string;
   cover_image_url?: string;
 }
-
-/* ---------------- HELPERS ---------------- */
-
 const stripHtml = (html: string) => html.replace(/<\/?[^>]+(>|$)/g, "");
 
-/* ---------------- CATEGORY IMAGES ---------------- */
-
 const CATEGORY_IMAGES: Record<string, string> = {
-  Indian: "/assest/images/restaurant/1699266093335.jpg",
+  indian: "/assest/images/restaurant/1699266093335.jpg",
   Chinese: "/assest/images/restaurant/1699266131351.jpg",
   Tandoor: "/assest/images/restaurant/1699266150603.jpg",
   Bangla: "/assest/images/restaurant/1699266093335.jpg",
@@ -253,8 +245,6 @@ export default function MenuPage() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [activeTab, setActiveTab] = useState<string>("");
   const [pageData, setPageData] = useState<PageData | null>(null);
-
-  /* -------- FETCH MENU -------- */
   useEffect(() => {
     const loadMenu = async () => {
       try {
@@ -281,8 +271,6 @@ export default function MenuPage() {
 
     loadMenu();
   }, []);
-
-  /* -------- FETCH PAGE (BANNER) -------- */
   useEffect(() => {
     const UID = "33b55d9f-33bd-49b5-8120-b495b47c70e8";
 
@@ -302,8 +290,6 @@ export default function MenuPage() {
 
     loadPage();
   }, []);
-
-  /* -------- GROUP MENU -------- */
   const groupedMenu = useMemo(() => {
     const group: Record<string, MenuItem[]> = {};
 
@@ -410,8 +396,6 @@ export default function MenuPage() {
           </div>
         </div>
       </section>
-
-      {/* App Download */}
       <section className="play_app_wrap">
         <div className="container">
           <div className="row">

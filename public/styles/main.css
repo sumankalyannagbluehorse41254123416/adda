@@ -38,6 +38,7 @@ body {
   line-height: 1.8em;
   color: var(--text-color);
 }
+
 /*koushik css*/
 
 
@@ -365,11 +366,13 @@ input[type=number] {
     left: 1%;
   }
 }
+
 @media (max-width:575px) {
   .room_nav.room_prev {
     display: none;
   }
 }
+
 .room_nav.room_next {
   right: 12%;
   z-index: 123;
@@ -1098,7 +1101,7 @@ header.header_sticky {
   position: relative;
   padding: 80px 0;
   padding-top: 70px;
-  background-color: #F2F5F3;
+  /* background-color: #F2F5F3; */
 }
 
 .about_wrap .row {
@@ -2157,8 +2160,9 @@ header.header_sticky {
   .stay_wrap .stay_inner .left_stay #service_thumbs .stay_thumb .details p {
     color: var(--text-color);
   }
+
   .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage .owl-item,
-.stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper .swiper-slide-visible.swiper-slide-fully-visible {
+  .stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper .swiper-slide-visible.swiper-slide-fully-visible {
     width: 100% !important;
   }
 }

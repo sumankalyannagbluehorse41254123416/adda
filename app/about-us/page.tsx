@@ -353,7 +353,6 @@ export default async function AboutPage() {
                           <i key={i} className="fa fa-star"></i>
                         ))} */}
                         {/* <i className="fa fa-star"></i> */}
-                        <i className="far fa-star"></i>
                       </div>
 
                       <h5 className="title">{brandSection.title}</h5>

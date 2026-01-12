@@ -203,12 +203,13 @@ section.gray .brand-info .inner .content {
 
 .brand-info .inner .stars {
   margin: 25px 0;
-  color: gold
+  
 }
 
 .brand-info .inner .stars i {
   font-size: 18px;
-  margin: 0 2px
+  margin: 0 2px;
+  color: gold !important;
 }
 
 .brand-info .inner .title {

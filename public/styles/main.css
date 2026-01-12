@@ -38,7 +38,10 @@ body {
   line-height: 1.8em;
   color: var(--text-color);
 }
+/*koushik css*/
 
+
+/*koushik css end*/
 .daterangepicker {
   font-family: "Roboto", sans-serif !important;
 }
@@ -2080,6 +2083,10 @@ header.header_sticky {
 
   .stay_wrap .stay_inner .left_stay #service_thumbs .stay_thumb .details p {
     color: var(--text-color);
+  }
+  .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage .owl-item,
+.stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper .swiper-slide-visible.swiper-slide-fully-visible {
+    width: 100% !important;
   }
 }
 

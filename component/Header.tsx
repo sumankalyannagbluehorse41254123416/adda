@@ -118,6 +118,9 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {/* <a className="scroll_top" href="#banner">
+        <i className="ri-arrow-up-s-line"></i>
+      </a> */}
     </header>
   );
 }

@@ -1629,8 +1629,8 @@ header.header_sticky {
   gap: 26px;
 }
 
-@media (max-width:1366px){
-  .guest_wrap .guest_inner .guest-pagination.slick-dots{
+@media (max-width:1366px) {
+  .guest_wrap .guest_inner .guest-pagination.slick-dots {
     left: 60px;
   }
 }
@@ -1655,14 +1655,15 @@ header.header_sticky {
 
 .guest-pagination .bullet-num {
   position: absolute;
-  left: -28px;   /* BEFORE bullet */
+  left: -28px;
+  /* BEFORE bullet */
   top: 50%;
   transform: translateY(-50%);
   font-size: 14px;
   color: #a4a4a4;
 }
 
-.guest_wrap .guest_inner .guest-pagination.slick-dots .swiper-pagination-bullet.swiper-pagination-bullet-active{
+.guest_wrap .guest_inner .guest-pagination.slick-dots .swiper-pagination-bullet.swiper-pagination-bullet-active {
   opacity: 1;
   width: 35px;
 }
@@ -4550,4 +4551,48 @@ strong {
     width: 30px;
     height: 30px;
   }
+}
+
+.date_wrap {
+  position: relative;
+}
+
+.calendar_popup {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.react-calendar {
+  border: none;
+}
+
+.calendar_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.clear_btn {
+  background: none;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.apply_btn {
+  background: #d8b15f;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
 }

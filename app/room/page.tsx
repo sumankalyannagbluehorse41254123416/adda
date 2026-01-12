@@ -185,9 +185,6 @@
 // }
 import { fetchPageData, Section } from "@/lib/page";
 import Image from "next/image";
-
-/* ---------------- TYPES ---------------- */
-
 interface SubSection {
   id: number;
   title: string; // price
@@ -206,57 +203,51 @@ interface ApiResponse {
   status: boolean;
   pageItemdataWithSubsection: RoomItem[];
 }
-
-/* ---------------- STATIC ICONS ---------------- */
-
 const ROOM_ICONS: Record<string, string[]> = {
   "Single AC Room": [
-    "1701766472957.png",
-    "1699872287089.png",
-    "1699872320772.png",
-    "1699872373126.png",
+    "/assest/images/rooms/p.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/tv.png",
   ],
   "Double AC Room": [
-    "1701766292210.png",
-    "1701766325077.png",
-    "1701766353702.png",
-    "1701766210749.png",
+    "/assest/images/rooms/tv.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/p.png",
+    "/assest/images/rooms/ac.png",
   ],
   "Deluxe AC Room": [
-    "1701766524505.png",
-    "1701766557052.png",
-    "1701766595124.png",
-    "1701766653703.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/p.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/tv.png",
   ],
   "Super Deluxe AC Room": [
-    "1701766691143.png",
-    "1701766717648.png",
-    "1701766740010.png",
-    "1701766766930.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/p.png",
+    "/assest/images/rooms/tv.png",
   ],
   "Executive AC Room": [
-    "1701767798613.png",
-    "1701767858362.png",
-    "1701767901841.png",
-    "1701767943925.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/tv.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/p.png",
   ],
   "Luxury AC Room": [],
   "King Room": [
-    "1701768549849.png",
-    "1701768581071.png",
-    "1701772016112.png",
-    "1701772050507.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/tv.png",
+    "/assest/images/rooms/p.png",
   ],
   "Suite Room": [
-    "1701772102314.png",
-    "1701772143432.png",
-    "1701772176981.png",
-    "1701772206598.png",
+    "/assest/images/rooms/ac.png",
+    "/assest/images/rooms/food.png",
+    "/assest/images/rooms/p.png",
+    "/assest/images/rooms/tv.png",
   ],
 };
-
-/* ---------------- DATA FETCH (SERVER) ---------------- */
-
 async function getRooms(): Promise<Section[]> {
   const res = await fetchPageData({
     uid: "b6ec9b49-c265-4c94-b6b3-03eb6d60638b",
@@ -323,7 +314,7 @@ export default async function RoomsPage() {
                             {icons.map((icon, i) => (
                               <li key={i}>
                                 <img
-                                  src={`https://wip.tezcommerce.com:3304/admin/module/71/${icon}`}
+                                  src={icon}
                                   alt={`${room.title} amenity ${i + 1}`}
                                 />
                               </li>
@@ -338,7 +329,7 @@ export default async function RoomsPage() {
                     <div className="ritem_right">
                       {price && (
                         <h4>
-                          <span>₹ {price}</span>  PER NIGHT
+                          <span>₹ {price}</span> PER NIGHT
                         </h4>
                       )}
                       <a href="tel:+918436008000">

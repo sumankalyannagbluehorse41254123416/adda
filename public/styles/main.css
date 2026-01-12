@@ -39,6 +39,10 @@ body {
   color: var(--text-color);
 }
 
+/*koushik css*/
+
+
+/*koushik css end*/
 .daterangepicker {
   font-family: "Roboto", sans-serif !important;
 }
@@ -1097,7 +1101,7 @@ header.header_sticky {
   position: relative;
   padding: 80px 0;
   padding-top: 70px;
-  background-color: #F2F5F3;
+  /* background-color: #F2F5F3; */
 }
 
 .about_wrap .row {
@@ -2231,6 +2235,11 @@ header.header_sticky {
 
   .stay_wrap .stay_inner .left_stay #service_thumbs .stay_thumb .details p {
     color: var(--text-color);
+  }
+
+  .stay_wrap .stay_inner .left_stay #service_thumbs .owl-stage .owl-item,
+  .stay_wrap .stay_inner .left_stay #service_thumbs .swiper-wrapper .swiper-slide-visible.swiper-slide-fully-visible {
+    width: 100% !important;
   }
 }
 

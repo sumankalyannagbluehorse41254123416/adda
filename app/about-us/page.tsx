@@ -325,7 +325,7 @@ export default async function AboutPage() {
       <section className="about_wrap about_hotel">
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 col-md-12">
+            <div className="col-lg-8 col-md-12 col-sm-12 col-12">
               <h2>{page?.title}</h2>
               <h3>The Boutique Hotel</h3>
 
@@ -337,7 +337,7 @@ export default async function AboutPage() {
             </div>
 
             {brandSection && (
-              <div className="col-lg-4 col-md-12">
+              <div className="col-lg-4 col-md-12 col-sm-12 col-12">
                 <div className="brand-info">
                   <div className="inner">
                     <div className="content">
@@ -349,9 +349,11 @@ export default async function AboutPage() {
                       />
 
                       <div className="stars">
-                        {[...Array(5)].map((_, i) => (
+                        {/* {[...Array(5)].map((_, i) => (
                           <i key={i} className="fa fa-star"></i>
-                        ))}
+                        ))} */}
+                        {/* <i className="fa fa-star"></i> */}
+                        <i className="far fa-star"></i>
                       </div>
 
                       <h5 className="title">{brandSection.title}</h5>

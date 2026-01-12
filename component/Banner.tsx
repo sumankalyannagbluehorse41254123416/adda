@@ -65,7 +65,7 @@
 
 import { fetchBanner } from "@/lib/banner";
 import Image from "next/image";
-import DatePicker from "./DateCheckInAndOut";
+// import BannerCalendarForm from "./BannerCalendarForm";
 
 export default async function Banner() {
   const UID = "e0805c28-4a5e-4b07-af80-cb323e20b3b6";
@@ -108,11 +108,11 @@ export default async function Banner() {
               <input type="number" placeholder="No of Guest" />
               <button type="submit">Check Availability</button>
             </form>
-            {/* <DatePicker/> */}
+            {/* <BannerCalendarForm /> */}
           </div>
 
           {/* Mobile Form */}
-          <form className="hb_form hbm_form">
+          <form className="hb_form hbm_form">zz
             <input
               type="text"
               name="datefilter"

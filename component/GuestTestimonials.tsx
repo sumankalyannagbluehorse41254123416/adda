@@ -108,7 +108,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -195,8 +194,7 @@ export default function GuestTestimonials() {
                 0: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
-              }}
-            >
+              }}>
               {testimonials.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="guest_item">
@@ -225,8 +223,6 @@ export default function GuestTestimonials() {
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            {/* ✅ Separate pagination div */}
             <div className="guest-pagination slick-dots"></div>
           </div>
         </div>

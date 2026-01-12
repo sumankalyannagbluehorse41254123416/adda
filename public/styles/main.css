@@ -1098,7 +1098,7 @@ header.header_sticky {
   position: relative;
   padding: 80px 0;
   padding-top: 70px;
-  background-color: #F2F5F3;
+  /* background-color: #F2F5F3; */
 }
 
 .about_wrap .row {

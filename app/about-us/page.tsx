@@ -348,11 +348,18 @@ export default async function AboutPage() {
                         height={120}
                       />
 
-                      <div className="stars">
+                      {/* <div className="stars">
                         {[...Array(5)].map((_, i) => (
                           <i key={i} className="fa fa-star"></i>
                         ))}
+                      </div> */}
+
+                      <div className="stars">
+                        {[...Array(5)].map((_, i) => (
+                          <i key={i} className="ri-star-fill"></i>
+                        ))}
                       </div>
+
 
                       <h5 className="title">{brandSection.title}</h5>
 

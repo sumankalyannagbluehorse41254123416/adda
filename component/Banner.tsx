@@ -65,6 +65,7 @@
 
 import { fetchBanner } from "@/lib/banner";
 import Image from "next/image";
+import DateRangePicker from "./DateRangePicker";
 
 export default async function Banner() {
   const UID = "e0805c28-4a5e-4b07-af80-cb323e20b3b6";
@@ -108,6 +109,7 @@ export default async function Banner() {
               <button type="submit">Check Availability</button>
             </form>
           </div>
+          <DateRangePicker />
 
           {/* Mobile Form */}
           <form className="hb_form hbm_form">

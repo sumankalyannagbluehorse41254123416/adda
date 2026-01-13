@@ -99,7 +99,7 @@ export default async function Banner() {
               }}
             />
 
-            <form className="hb_form">
+            {/* <form className="hb_form">
               <input
                 type="text"
                 name="datefilter"
@@ -107,7 +107,8 @@ export default async function Banner() {
               />
               <input type="number" placeholder="No of Guest" />
               <button type="submit">Check Availability</button>
-            </form>
+            </form> */}
+
             {/* <BannerCalendarForm /> */}
           </div>
 

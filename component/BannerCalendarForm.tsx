@@ -91,7 +91,9 @@ export default function BannerCalendarForm() {
         placeholder="No of Guest"
       />
 
-      <button type="submit">Check Availability</button>
+      <button className="availability_button" type="submit">
+        Check Availability
+      </button>
     </form>
   );
 }

@@ -821,7 +821,25 @@ header.header_sticky {
   background-color: var(--white);
   padding: 15px 0;
   padding-bottom: 80px;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.calendar_footer button {
+  width: fit-content !important;
+  padding: 5px 10px;
+}
+
+.calendar_footer div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  clear: both;
+  text-align: right;
+  padding: 8px;
+  border: 1px solid #ddd;
+  line-height: 12px;
+  vertical-align: middle;
+
 }
 
 .banner_wrap .banner_inner {
@@ -861,7 +879,11 @@ header.header_sticky {
   padding-top: 70px;
   padding-left: 0;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.calendar_popup .react-calendar__navigation {
+  height: 25px;
 }
 
 .banner_wrap .banner_inner .banner_con h1 {
@@ -894,6 +916,41 @@ header.header_sticky {
   gap: 30px;
 }
 
+.banner_wrap .banner_inner .hb_form .date_wrap {
+  position: relative;
+  width: 100%;
+}
+
+.banner_wrap .banner_inner .hb_form .calendar_popup {
+  position: absolute;
+  top: 60px;
+  border: 1px solid #ddd;
+}
+
+.banner_wrap .banner_inner .hb_form .react-calendar__navigation__label__labelText,
+.banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day {
+  color: #858585 !important;
+  background-color: var(--white) !important;
+}
+
+.banner_wrap .banner_inner .hb_form button.react-calendar__navigation__prev2-button,
+.banner_wrap .banner_inner .hb_form button.react-calendar__navigation__next2-button {
+  display: none !important;
+
+}
+
+.date_wrap .calendar_popup .react-calendar--doubleView .react-calendar__navigation__prev-button,
+.date_wrap .calendar_popup .react-calendar--doubleView .react-calendar__navigation__next-button,
+.react-calendar__navigation__label {
+  color: #606060;
+  background-color: var(--white) !important;
+  width: fit-content;
+}
+
+.calendar_popup .react-calendar--doubleView {
+  width: 535px;
+}
+
 .banner_wrap .banner_inner .hb_form input,
 .banner_wrap .banner_inner .hb_form button {
   width: 100%;
@@ -918,13 +975,31 @@ header.header_sticky {
 .banner_wrap .banner_inner .hb_form button {
   background-color: var(--main-color);
   color: var(--white);
-  height: 50px;
+  height: 32px;
   border-radius: 5px;
   border: none;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 1px;
   transition: all 300ms ease-in-out;
+}
+.banner_wrap .banner_inner .hb_form .availability_button{
+  height: 50px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.banner_wrap .banner_inner .hb_form button.react-calendar__navigation__label {
+  display: flex;
+  justify-content: space-around;
+}
+
+.banner_wrap .banner_inner .hb_form button.react-calendar__navigation__label .react-calendar__navigation__label__labelText {
+  line-height: 37px;
+}
+
+.calendar_popup .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
 }
 
 .banner_wrap .banner_inner .hb_form button:hover {
@@ -4552,4 +4627,3 @@ strong {
     height: 30px;
   }
 }
-

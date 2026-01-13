@@ -65,6 +65,7 @@
 
 import { fetchBanner } from "@/lib/banner";
 import Image from "next/image";
+import BannerCalendarForm from "./BannerCalendarForm";
 // import BannerCalendarForm from "./BannerCalendarForm";
 
 export default async function Banner() {
@@ -108,8 +109,7 @@ export default async function Banner() {
               <input type="number" placeholder="No of Guest" />
               <button type="submit">Check Availability</button>
             </form> */}
-
-            {/* <BannerCalendarForm /> */}
+            <BannerCalendarForm />
           </div>
 
           {/* Mobile Form */}

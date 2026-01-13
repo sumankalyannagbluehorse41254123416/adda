@@ -96,13 +96,6 @@ export default function BannerCalendarForm() {
   );
 }
 
-
-
-
-
-
-
-
 // "use client";
 
 // import { useState, useRef, useEffect } from "react";

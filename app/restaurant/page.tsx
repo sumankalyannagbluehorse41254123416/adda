@@ -333,7 +333,7 @@ export default function MenuPage() {
             <h2>
               {pageData?.title?.split(" ").slice(0, 2).join(" ")}
               <br />
-              {pageData?.title?.split(" ").slice(2).join(" ")}
+              {pageData?.title?.split(" ").slice(2).join(" ") || " No Title"}
             </h2>
             <p>{pageData?.description}</p>
           </div>

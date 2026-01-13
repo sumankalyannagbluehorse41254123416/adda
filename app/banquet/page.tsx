@@ -39,7 +39,11 @@ export default async function FullBanner() {
 
         <div className="container">
           <div className="fb_inner">
-            <h1>{data?.title || "No Title"}</h1>
+            <h2>
+              {data?.title?.split(" ").slice(0, 3).join(" ")}
+              <br />
+              {data?.title?.split(" ").slice(3).join(" ") || "No Title"}
+            </h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: data?.description || "No description",

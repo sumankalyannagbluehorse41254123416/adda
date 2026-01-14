@@ -127,9 +127,6 @@ export interface Subsection {
   image?: string;
   slug?: string;
 }
-
-/* ---------------- SECTION (ROOM ITEM) ---------------- */
-
 export interface Section {
   id: number;
   title: string;
@@ -139,34 +136,22 @@ export interface Section {
   section_sequence: number;
   subsections?: Subsection[];
 }
-
-/* ---------------- PAGE ---------------- */
-
 export interface Page {
   id?: number;
   title: string;
   description?: string;
   cover_image_url?: string;
 }
-
-/* ---------------- API RESPONSE ---------------- */
-
 export interface ApiResponse {
   status: boolean;
   pagedata: Page;
   json: any;
   pageItemdataWithSubsection: Section[];
 }
-
-/* ---------------- FETCH PARAMS ---------------- */
-
 interface FetchPageDataParams {
   uid: string;
   host?: string;
 }
-
-/* ---------------- API CALL ---------------- */
-
 export async function fetchPageData({
   uid,
   host = "localhost:3000",

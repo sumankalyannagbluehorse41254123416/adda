@@ -352,7 +352,6 @@ export default function BannerCalendarForm() {
                   onClick={handleClear}>
                   Clear
                 </button>
-
                 <button
                   type="button"
                   className="apply_btn"

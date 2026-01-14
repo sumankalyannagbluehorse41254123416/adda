@@ -113,7 +113,8 @@ export default async function Banner() {
           </div>
 
           {/* Mobile Form */}
-          <form className="hb_form hbm_form">zz
+          <form className="hb_form hbm_form">
+            zz
             <input
               type="text"
               name="datefilter"

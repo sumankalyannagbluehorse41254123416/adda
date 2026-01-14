@@ -67,7 +67,19 @@
 //               spaceBetween={24}
 //               slidesPerView={3}
 //               autoplay={{ delay: 3000 }}
-//               pagination={{ clickable: true }}
+//               pagination={{
+//                 el: ".guest-pagination",
+//                 clickable: true,
+//                 renderBullet: (index, className) => {
+//                   return `
+//         <span class="${className}">
+//           <span class="bullet-num">
+//             ${String(index + 1).padStart(2, "0")}
+//           </span>
+//         </span>
+//       `;
+//                 },
+//               }}
 //               breakpoints={{
 //                 0: { slidesPerView: 1 },
 //                 768: { slidesPerView: 2 },
@@ -101,18 +113,21 @@
 //                 </SwiperSlide>
 //               ))}
 //             </Swiper>
+//             <div className="guest-pagination slick-dots"></div>
 //           </div>
 //         </div>
 //       </div>
 //     </section>
 //   );
 // }
-
 "use client";
 
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
+
+import { fetchPageData } from "@/lib/page"; // adjust path if needed
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -123,50 +138,53 @@ interface Testimonial {
   rating: number;
   message: string;
 }
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Akash Mahapatra",
-    image: "https://wip.tezcommerce.com:3304/admin/module/71/1698823903574.png",
-    rating: 5,
-    message: "Nice place atmosphere is so nice",
-  },
-  {
-    name: "JS Basu",
-    image: "https://wip.tezcommerce.com:3304/admin/module/71/1699623656204.png",
-    rating: 4,
-    message:
-      "Excellent hotel. Excellent food and lodging. Each and every staff is polite, professional, and helpful.",
-  },
-  {
-    name: "Ananya Mandal",
-    image: "https://wip.tezcommerce.com:3304/admin/module/71/1699623693842.png",
-    rating: 5,
-    message:
-      "The atmosphere was quite good. The quality and quantity of the food were good.",
-  },
-  {
-    name: "Sushanta Palit",
-    image: "https://wip.tezcommerce.com:3304/admin/module/71/1699623779832.png",
-    rating: 5,
-    message: "Rooms are clean, staff behavior is excellent.",
-  },
-  {
-    name: "Anirvid Sarkar",
-    image: "https://wip.tezcommerce.com:3304/admin/module/71/1699859193271.png",
-    rating: 4,
-    message: "The rooms are really nicely done and maintained.",
-  },
-];
-
+const stripHtml = (html = "") =>
+  html
+    .replace(/<[^>]*>?/gm, "")
+    .replace(/&nbsp;/g, " ")
+    .trim();
 export default function GuestTestimonials() {
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const UID = "9c4c87a8-f6db-4fd7-8466-1b8559dafd3d";
+
+    const loadData = async () => {
+      try {
+        const res = await fetchPageData({ uid: UID });
+        setTitle(res.pagedata?.title || "");
+        setSubtitle(stripHtml(res.pagedata?.description || ""));
+        const items: Testimonial[] =
+          res.pageItemdataWithSubsection?.map((item) => ({
+            name: item.title,
+            image: item.image || "",
+            message: stripHtml(item.shortDescription || ""),
+            rating: Number(item.subsections?.[0]?.title || ""),
+          })) || [];
+
+        setTestimonials(items);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  if (loading) return null;
+
   return (
     <section className="guest_wrap">
       <div className="container">
         <div className="sec_title_btn">
           <div>
-            <h2>Words from Our Happy Guests</h2>
-            <h3>Insightful Feedback on Our Hotel and Restaurant Services</h3>
+            <h2>{title}</h2>
+            <h3>{subtitle}</h3>
           </div>
         </div>
 
@@ -176,19 +194,19 @@ export default function GuestTestimonials() {
               modules={[Autoplay, Pagination]}
               spaceBetween={24}
               slidesPerView={3}
+              slidesPerGroup={3}
+              loop={false}
               autoplay={{ delay: 3000 }}
               pagination={{
                 el: ".guest-pagination",
                 clickable: true,
-                renderBullet: (index, className) => {
-                  return `
-        <span class="${className}">
-          <span class="bullet-num">
-            ${String(index + 1).padStart(2, "0")}
-          </span>
-        </span>
-      `;
-                },
+                renderBullet: (index, className) => `
+                  <span class="${className}">
+                    <span class="bullet-num">
+                      ${String(index + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+                `,
               }}
               breakpoints={{
                 0: { slidesPerView: 1 },
@@ -223,6 +241,7 @@ export default function GuestTestimonials() {
                 </SwiperSlide>
               ))}
             </Swiper>
+
             <div className="guest-pagination slick-dots"></div>
           </div>
         </div>

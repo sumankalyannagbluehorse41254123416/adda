@@ -80,6 +80,18 @@
   font-size: 90px;
 }
 
+.lb-prev,
+.lb-next {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lb-prev:hover,
+.lb-next:hover {
+  opacity: 1;
+}
+
+
 .lb-nav:hover {
   opacity: 1;
 }

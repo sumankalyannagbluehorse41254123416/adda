@@ -343,13 +343,8 @@ export default function BannerCalendarForm() {
 
             {/* Footer */}
             <div className="calendar_footer">
-              <span>
-                {tempRange[0] && tempRange[1]
-                  ? `${formatDate(tempRange[0])} - ${formatDate(tempRange[1])}`
-                  : tempRange[0]
-                  ? `${formatDate(tempRange[0])} - Select end date`
-                  : "Select dates"}
-              </span>
+              
+
               <div>
                 <button
                   type="button"

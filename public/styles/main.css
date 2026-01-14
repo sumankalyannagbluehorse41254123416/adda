@@ -890,6 +890,14 @@ header.header_sticky {
   height: 25px;
 }
 
+.react-calendar {
+    border: 1px solid gray !important;
+}
+.datecount{
+  margin-right: 10px;
+  padding-top: 10px;
+}
+
 .banner_wrap .banner_inner .banner_con h1 {
   font-family: "Jost", sans-serif;
   color: rgb(38, 38, 38);

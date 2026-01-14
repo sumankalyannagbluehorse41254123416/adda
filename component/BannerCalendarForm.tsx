@@ -350,7 +350,6 @@ export default function BannerCalendarForm() {
                   ? `${formatDate(tempRange[0])} - Select end date`
                   : "Select dates"}
               </span>
-
               <div>
                 <button
                   type="button"
@@ -358,7 +357,6 @@ export default function BannerCalendarForm() {
                   onClick={handleClear}>
                   Clear
                 </button>
-
                 <button
                   type="button"
                   className="apply_btn"

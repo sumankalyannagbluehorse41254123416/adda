@@ -315,6 +315,7 @@ input[type=number] {
   position: relative;
   z-index: 1;
   height: 18px !important;
+  
 }
 
 .slide_style_one .slick-prev::after,
@@ -352,6 +353,8 @@ input[type=number] {
 .room_nav.room_prev svg,
 .room_nav.room_next svg{
 position: relative;
+color: black !important;
+
 }
 
 .room_nav.room_prev {
@@ -891,7 +894,10 @@ header.header_sticky {
 }
 
 .react-calendar {
-    border: 1px solid gray !important;
+    border: 1px solid #ddd !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: navy !important;
 }
 .datecount{
   margin-right: 10px;
@@ -943,6 +949,11 @@ header.header_sticky {
 .banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day {
   color: #858585 !important;
   background-color: var(--white) !important;
+}
+
+.banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day:active {
+  background-color: var(--main-color) !important;
+  color: var(--white) !important;
 }
 
 .banner_wrap .banner_inner .hb_form button.react-calendar__navigation__prev2-button,

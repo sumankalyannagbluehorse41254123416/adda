@@ -951,10 +951,27 @@ header.header_sticky {
   background-color: var(--white) !important;
 }
 
-.banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day:active {
-  background-color: var(--main-color) !important;
-  color: var(--white) !important;
+/* START & END date → YELLOW */
+.banner_wrap .banner_inner .hb_form
+button.react-calendar__tile--rangeStart,
+.banner_wrap .banner_inner .hb_form
+button.react-calendar__tile--rangeEnd {
+  background: #deb666 !important;
+  color: #000 !important;
+  border-radius: 6px !important;
 }
+
+.banner_wrap .banner_inner .hb_form
+button.react-calendar__tile--range:not(
+  .react-calendar__tile--rangeStart,
+  .react-calendar__tile--rangeEnd
+) {
+  background: #ebf4f8 !important;
+  color: black !important;
+  border-radius: 0 !important;
+}
+
+
 
 .banner_wrap .banner_inner .hb_form button.react-calendar__navigation__prev2-button,
 .banner_wrap .banner_inner .hb_form button.react-calendar__navigation__next2-button {

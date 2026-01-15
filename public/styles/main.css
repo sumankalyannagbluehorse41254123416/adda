@@ -951,6 +951,10 @@ header.header_sticky {
   background-color: var(--white) !important;
 }
 
+.banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day:hover {
+  background-color: #f0f0f0 !important;
+}
+
 /* START & END date → YELLOW */
 .banner_wrap .banner_inner .hb_form
 button.react-calendar__tile--rangeStart,

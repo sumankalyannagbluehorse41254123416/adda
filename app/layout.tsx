@@ -14,6 +14,7 @@ import Header from "@/component/Header";
 import Footer from "@/component/Footer";
 import { ToastContainer } from "react-toastify";
 import ClientLoaderEffect from "@/component/ClientLoaderEffect";
+import ScrollTop from "@/component/ScroolTop";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ScrollTop />
         </ClientLoaderEffect>
       </body>
     </html>

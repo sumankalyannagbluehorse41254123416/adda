@@ -37,10 +37,9 @@ const ScrollTop = () => {
 
   return (
     <a
-      href="#banner"
+      href="#"
       className={`scroll_top ${visible ? "goto" : ""}`}
-      aria-label="Scroll to top"
-    >
+      aria-label="Scroll to top">
       <i className="ri-arrow-up-s-line"></i>
     </a>
   );

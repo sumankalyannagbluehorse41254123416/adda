@@ -3,18 +3,44 @@
 import { useEffect, useState } from "react";
 
 const ScrollTop = () => {
-  const [show, setShow] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 100);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
-  if (!show) return null;
+    const onScroll = () => {
+      if (window.scrollY > 100) {
+        setMounted(true);
+
+        if (!visible) {
+          timer = setTimeout(() => {
+            setVisible(true);
+          }, 500);
+        }
+      } else {
+        if (timer) clearTimeout(timer);
+        setVisible(false);
+        setMounted(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [visible]);
+
+  if (!mounted) return null;
 
   return (
-    <a className="scroll_top goto" href="#banner">
+    <a
+      href="#banner"
+      className={`scroll_top ${visible ? "goto" : ""}`}
+      aria-label="Scroll to top"
+    >
       <i className="ri-arrow-up-s-line"></i>
     </a>
   );

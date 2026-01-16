@@ -315,7 +315,7 @@ input[type=number] {
   position: relative;
   z-index: 1;
   height: 18px !important;
-  
+
 }
 
 .slide_style_one .slick-prev::after,
@@ -351,9 +351,9 @@ input[type=number] {
 }
 
 .room_nav.room_prev svg,
-.room_nav.room_next svg{
-position: relative;
-color: black !important;
+.room_nav.room_next svg {
+  position: relative;
+  color: black !important;
 
 }
 
@@ -894,12 +894,13 @@ header.header_sticky {
 }
 
 .react-calendar {
-    border: 1px solid #ddd !important;
-    border-left: none !important;
-    border-right: none !important;
-    border-top: navy !important;
+  border: 1px solid #ddd !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: navy !important;
 }
-.datecount{
+
+.datecount {
   margin-right: 10px;
   padding-top: 10px;
 }
@@ -956,20 +957,15 @@ header.header_sticky {
 }
 
 /* START & END date → YELLOW */
-.banner_wrap .banner_inner .hb_form
-button.react-calendar__tile--rangeStart,
-.banner_wrap .banner_inner .hb_form
-button.react-calendar__tile--rangeEnd {
+.banner_wrap .banner_inner .hb_form button.react-calendar__tile--rangeStart,
+.banner_wrap .banner_inner .hb_form button.react-calendar__tile--rangeEnd {
   background: #deb666 !important;
   color: #000 !important;
   border-radius: 6px !important;
 }
 
-.banner_wrap .banner_inner .hb_form
-button.react-calendar__tile--range:not(
-  .react-calendar__tile--rangeStart,
-  .react-calendar__tile--rangeEnd
-) {
+.banner_wrap .banner_inner .hb_form button.react-calendar__tile--range:not(.react-calendar__tile--rangeStart,
+  .react-calendar__tile--rangeEnd) {
   background: #ebf4f8 !important;
   color: black !important;
   border-radius: 0 !important;
@@ -1027,7 +1023,8 @@ button.react-calendar__tile--range:not(
   letter-spacing: 1px;
   transition: all 300ms ease-in-out;
 }
-.banner_wrap .banner_inner .hb_form .availability_button{
+
+.banner_wrap .banner_inner .hb_form .availability_button {
   height: 50px;
   font-size: 15px;
   font-weight: 600;
@@ -2709,10 +2706,10 @@ footer .copyright ul li:first-child a::before {
 }
 
 .scroll_top {
-  display: block;
   position: fixed;
-  bottom: -10px;
   right: 25px;
+  bottom: 50px;
+
   background-color: var(--main-color);
   color: var(--white);
   width: 50px;
@@ -2722,14 +2719,24 @@ footer .copyright ul li:first-child a::before {
   text-align: center;
   line-height: 50px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+
+  transform: translateY(150px);
   opacity: 0;
-  transition: all 400ms ease-in-out;
+  pointer-events: none;
+
+  transition:
+    transform 0.4s ease 0.5s,
+    opacity 0.4s ease 0.5s;
 }
 
 .scroll_top.goto {
-  bottom: 50px;
+  transform: translateY(0);
   opacity: 1;
+  pointer-events: auto;
+  z-index: 9999;
 }
+
+
 
 
 /*------------------blog-details-------------*/

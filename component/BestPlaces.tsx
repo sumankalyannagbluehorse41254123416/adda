@@ -153,7 +153,6 @@ export default function BestPlaces() {
 
   return (
     <section className="best_place_wrap">
-      {/* External arrows */}
       <button className="best-place-prev room_nav room_prev">
         <svg
           className="swiper-navigation-icon"

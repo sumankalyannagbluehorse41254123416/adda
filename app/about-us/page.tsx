@@ -360,7 +360,6 @@ export default async function AboutPage() {
                         ))}
                       </div>
 
-
                       <h5 className="title">{brandSection.title}</h5>
 
                       <div
@@ -414,7 +413,7 @@ export default async function AboutPage() {
         <section className="staff_wrap staff_setion">
           <div className="container">
             <div className="sec_title_btn staff_sec_box">
-              <h3>{guestSection.title}</h3>
+              <h2>{guestSection.title}</h2>
             </div>
 
             <div className="row">

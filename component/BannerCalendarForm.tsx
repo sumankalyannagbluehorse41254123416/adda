@@ -262,8 +262,6 @@ export default function BannerCalendarForm() {
   const [finalRange, setFinalRange] = useState<DateRange>([null, null]);
   const [guests, setGuests] = useState<string>("");
   const calendarRef = useRef<HTMLDivElement>(null);
-
-  // Close calendar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -301,19 +299,17 @@ export default function BannerCalendarForm() {
   const handleClear = () => {
     setTempRange([null, null]);
     setFinalRange([null, null]);
-    // Don't close the popup on clear
   };
 
   const handleApply = () => {
     if (tempRange[0] && tempRange[1]) {
       setFinalRange(tempRange);
-      setOpen(false); // Close popup after applying
+      setOpen(false);
     }
   };
 
   const handleGuestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Allow empty string or numbers
     if (value === "" || /^\d*$/.test(value)) {
       setGuests(value);
     }
@@ -321,7 +317,6 @@ export default function BannerCalendarForm() {
 
   return (
     <form className="hb_form">
-      {/* Date Input */}
       <div className="date_wrap" ref={calendarRef}>
         <input
           type="text"
@@ -340,8 +335,6 @@ export default function BannerCalendarForm() {
               onChange={(value) => setTempRange(value as DateRange)}
               value={tempRange}
             />
-
-            {/* Footer */}
             <div className="calendar_footer">
               <div>
                 <span className="datecount">

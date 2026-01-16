@@ -132,17 +132,17 @@ export default function Footer() {
               <h3>Latest News</h3>
               <ul className="f_link">
                 <li>
-                  <Link href="/blog-details/jhargram-palace-heritage">
+                  <Link href="/blog-details/jhargram-palace-heritage-41">
                     Jhargram Palace Heritage
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog-details/gangani-garbetha-hidden-jewel">
+                  <Link href="/blog-details/gangani-garbetha-s-hidden-jewel-a-tranquil-retreat-and-tourist-attraction-41">
                     Gangani: Garbetha&apos;s Hidden Jewel
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog-details/exploring-the-enchanting-terracotta-temples">
+                  <Link href="/blog-details/exploring-the-enchanting-terracotta-temples-41">
                     Exploring the Enchanting Terracotta Temples
                   </Link>
                 </li>

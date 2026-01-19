@@ -969,7 +969,7 @@ header.header_sticky {
   position: absolute;
   top: 60px;
   border: 1px solid #ddd;
-  
+  background-color: var(--white);
 }
 
 .banner_wrap .banner_inner .hb_form .react-calendar__navigation__label__labelText,
@@ -1240,7 +1240,7 @@ header.header_sticky {
 /**** Style for About Us Section ****/
 
 .about_wrap {
-  position: relative;
+  /* position: relative; */
   padding: 80px 0;
   padding-top: 70px;
   background-color: #F2F5F3;

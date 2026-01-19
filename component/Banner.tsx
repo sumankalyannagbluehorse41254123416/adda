@@ -113,7 +113,7 @@ export default async function Banner() {
           </div>
 
           {/* Mobile Form */}
-          <form className="hb_form hbm_form">
+          {/* <form className="hb_form hbm_form">
             <input
               type="text"
               name="datefilter"
@@ -121,7 +121,7 @@ export default async function Banner() {
             />
             <input type="number" placeholder="No of Guest" />
             <button type="submit">Check Availability</button>
-          </form>
+          </form> */}
         </div>
       </div>
     </section>

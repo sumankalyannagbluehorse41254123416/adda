@@ -154,6 +154,12 @@ input[type=number] {
 }
 
 
+/* today wins over start-date */
+.banner_wrap .banner_inner .hb_form button.react-calendar__month-view__days__day.today-date {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+}
+
 @media (max-width: 768px) {
   .calendar_popup {
     position: fixed !important;
@@ -868,7 +874,7 @@ header.header_sticky {
   gap: 10px;
   clear: both;
   text-align: right;
-  padding: 8px;
+  padding: 10px 8px 12px;
   line-height: 12px;
   vertical-align: middle;
 
@@ -915,7 +921,8 @@ header.header_sticky {
 }
 
 .calendar_popup .react-calendar__navigation {
-  height: 25px;
+  height: auto;
+  margin-bottom: 0;
 }
 
 .react-calendar {
@@ -1041,13 +1048,21 @@ header.header_sticky {
 .banner_wrap .banner_inner .hb_form button {
   background-color: var(--main-color);
   color: var(--white);
-  height: 32px;
+  /* height: 32px; */
   border-radius: 5px;
   border: none;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 1px;
   transition: all 300ms ease-in-out;
+}
+
+.react-calendar--doubleView .react-calendar__tile {
+  padding: 5px 5.6667px;
+}
+
+.react-calendar__month-view__days .react-calendar__tile {
+  padding: 5px 5.6667px;
 }
 
 .banner_wrap .banner_inner .hb_form .availability_button {
@@ -1152,8 +1167,8 @@ header.header_sticky {
   }
 
   .banner_wrap .banner_inner .hb_form button {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
     letter-spacing: 0;
   }
 }

@@ -1,15 +1,18 @@
-
 "use client";
 
 import { useState, useRef, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+const today = new Date();
 
 type DateRange = [Date | null, Date | null];
 
 export default function BannerCalendarForm() {
   const [open, setOpen] = useState(false);
-  const [tempRange, setTempRange] = useState<DateRange>([null, null]);
+  // const [tempRange, setTempRange] = useState<DateRange>([null, null]);
+  // const [finalRange, setFinalRange] = useState<DateRange>([null, null]);
+
+  const [tempRange, setTempRange] = useState<DateRange>([today, null]);
   const [finalRange, setFinalRange] = useState<DateRange>([null, null]);
   const [guests, setGuests] = useState<string>("");
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -34,38 +37,33 @@ export default function BannerCalendarForm() {
   }, [open]);
 
   const formatDate = (date: Date | null) =>
-    date
-      ? date.toLocaleDateString("en-GB", {
+    date ?
+      date.toLocaleDateString("en-GB", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
       })
-      : "";
-
+    : "";
   const displayValue =
-    finalRange[0] && finalRange[1]
-      ? `${formatDate(finalRange[0])} - ${formatDate(finalRange[1])}`
-      : "";
-
+    finalRange[0] && finalRange[1] ?
+      `${formatDate(finalRange[0])} - ${formatDate(finalRange[1])}`
+    : "";
   const handleClear = () => {
-    setTempRange([null, null]);
+    setTempRange([today, null]);
     setFinalRange([null, null]);
   };
-
   const handleApply = () => {
     if (tempRange[0] && tempRange[1]) {
       setFinalRange(tempRange);
       setOpen(false);
     }
   };
-
   const handleGuestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === "" || /^\d*$/.test(value)) {
       setGuests(value);
     }
   };
-
   return (
     <form className="hb_form">
       <div className="date_wrap" ref={calendarRef}>
@@ -76,7 +74,6 @@ export default function BannerCalendarForm() {
           value={displayValue}
           onClick={() => setOpen(!open)}
         />
-
         {open && (
           <div className="calendar_popup">
             <Calendar
@@ -85,18 +82,25 @@ export default function BannerCalendarForm() {
               minDate={new Date()}
               onChange={(value) => setTempRange(value as DateRange)}
               value={tempRange}
+              tileClassName={({ date, view }) => {
+                if (
+                  view === "month" &&
+                  tempRange[0] &&
+                  date.toDateString() === tempRange[0].toDateString()
+                ) {
+                  return "custom-start-date";
+                }
+                return null;
+              }}
             />
-
             <div className="calendar_footer">
               <div>
                 <span className="datecount">
-                  {tempRange[0] && tempRange[1]
-                    ? `${formatDate(tempRange[0])} - ${formatDate(
-                      tempRange[1]
-                    )}`
-                    : tempRange[0]
-                      ? `${formatDate(tempRange[0])} - Select end date`
-                      : "Select dates"}
+                  {tempRange[0] && tempRange[1] ?
+                    `${formatDate(tempRange[0])} - ${formatDate(tempRange[1])}`
+                  : tempRange[0] ?
+                    `${formatDate(tempRange[0])} - Select end date`
+                  : "Select dates"}
                 </span>
                 <button
                   type="button"
@@ -115,7 +119,6 @@ export default function BannerCalendarForm() {
           </div>
         )}
       </div>
-
       <input
         type="number"
         min="1"
@@ -124,7 +127,7 @@ export default function BannerCalendarForm() {
         placeholder="No of Guest"
         onBlur={(e) => {
           if (e.target.value === "" || e.target.value === "0") {
-            setGuests("1");
+            setGuests("");
           }
         }}
         onFocus={(e) => {
@@ -133,10 +136,29 @@ export default function BannerCalendarForm() {
           }
         }}
       />
-
       <button className="availability_button" type="submit">
         Check Availability
       </button>
+      <style jsx>{`
+        :global(.clear_btn) {
+          background: transparent !important;
+          border: none !important;
+          font-weight: 700 !important;
+          box-shadow: none !important;
+          cursor: pointer;
+          color: black !important;
+        }
+        .react-calendar__tile.custom-start-date {
+          background: #e2b14a !important;
+          color: #fff !important;
+          border-radius: 6px;
+        }
+
+        .react-calendar__tile.custom-start-date abbr {
+          color: #fff !important;
+          font-weight: 600;
+        }
+      `}</style>
     </form>
   );
 }

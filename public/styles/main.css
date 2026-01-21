@@ -1056,8 +1056,8 @@ header.header_sticky {
   font-weight: 600;
 }
 
-@media (max-width:768px){
-  .banner_wrap .banner_inner .hb_form .availability_button{
+@media (max-width:768px) {
+  .banner_wrap .banner_inner .hb_form .availability_button {
     font-size: 12px;
   }
 }
@@ -4710,4 +4710,35 @@ strong {
     width: 30px;
     height: 30px;
   }
+}
+
+.react-calendar__month-view__days__day {
+  color: #222;
+  font-weight: 500;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #bdbdbd !important;
+  opacity: 0.4;
+}
+
+.react-calendar__month-view__days__day:not(.react-calendar__month-view__days__day--neighboringMonth):hover {
+  background: #f2c97d;
+  color: #000;
+  border-radius: 6px;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth:hover {
+  background: transparent;
+  cursor: default;
+}
+
+.date_wrap .calendar_popup .react-calendar--doubleView .react-calendar__navigation__prev-button,
+.date_wrap .calendar_popup .react-calendar--doubleView .react-calendar__navigation__next-button,
+.react-calendar__navigation__label {
+
+  color: rgb(96, 96, 96);
+  width: fit-content;
+  background-color: var(--white) !important;
+  font-size: 25px;
 }

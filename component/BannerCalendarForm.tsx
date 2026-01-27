@@ -200,18 +200,18 @@ export default function BannerCalendarForm() {
   }, [open]);
 
   const formatDate = (date: Date | null) =>
-    date
-      ? date.toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        })
-      : "";
+    date ?
+      date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+    : "";
 
   const displayValue =
-    finalRange[0] && finalRange[1]
-      ? `${formatDate(finalRange[0])} - ${formatDate(finalRange[1])}`
-      : "";
+    finalRange[0] && finalRange[1] ?
+      `${formatDate(finalRange[0])} - ${formatDate(finalRange[1])}`
+    : "";
 
   const handleClear = () => {
     setTempRange([today, null]);
@@ -278,24 +278,22 @@ export default function BannerCalendarForm() {
             <div className="calendar_footer">
               <div>
                 <span className="datecount">
-                  {tempRange[0] && tempRange[1]
-                    ? `${formatDate(tempRange[0])} - ${formatDate(tempRange[1])}`
-                    : tempRange[0]
-                    ? `${formatDate(tempRange[0])} - Select end date`
-                    : "Select dates"}
+                  {tempRange[0] && tempRange[1] ?
+                    `${formatDate(tempRange[0])} - ${formatDate(tempRange[1])}`
+                  : tempRange[0] ?
+                    `${formatDate(tempRange[0])} - Select end date`
+                  : "Select dates"}
                 </span>
                 <button
                   type="button"
                   className="clear_btn"
-                  onClick={handleClear}
-                >
+                  onClick={handleClear}>
                   Clear
                 </button>
                 <button
                   type="button"
                   className="apply_btn"
-                  onClick={handleApply}
-                >
+                  onClick={handleApply}>
                   Apply
                 </button>
               </div>

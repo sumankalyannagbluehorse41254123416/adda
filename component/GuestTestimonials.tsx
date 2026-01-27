@@ -161,8 +161,8 @@ export default function GuestTestimonials() {
           res.pageItemdataWithSubsection?.map((item) => ({
             name: item.title,
             image: item.image || "",
-            message: stripHtml(item.shortDescription || ""),
-            rating: Number(item.subsections?.[0]?.title || ""),
+            message: stripHtml(item.shortDescription || "No Description "),
+            rating: Number(item.subsections?.[0]?.title || "No Title"),
           })) || [];
 
         setTestimonials(items);

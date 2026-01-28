@@ -192,11 +192,11 @@ export default function GuestTestimonials() {
           <div className="guest_slide slide_style_two">
             <Swiper
               modules={[Autoplay, Pagination]}
-              spaceBetween={24}
+              spaceBetween={10}
               slidesPerView={3}
               slidesPerGroup={3}
               loop={false}
-              autoplay={{ delay: 3000 }}
+              autoplay={false}
               pagination={{
                 el: ".guest-pagination",
                 clickable: true,

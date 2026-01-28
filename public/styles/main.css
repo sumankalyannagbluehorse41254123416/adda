@@ -1289,7 +1289,12 @@ header.header_sticky {
   background-color: #F2F5F3;
   /* background-color: #F2F5F3; */
 }
-
+@media (max-width:575px){
+  .about_wrap.about_hotel
+{
+    padding: 30px 0 20px;
+  }
+}
 .about_wrap .row {
   align-items: center;
   margin: -20px;
@@ -2110,7 +2115,11 @@ header.header_sticky {
   }
 }
 
-
+@media (max-width: 575px) {
+  .staff_wrap {
+    padding: 25px 0 60px;
+  }
+}
 /**** Style for Best Stay ****/
 
 .stay_wrap {

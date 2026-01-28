@@ -196,7 +196,7 @@ export default function GuestTestimonials() {
               slidesPerView={3}
               slidesPerGroup={3}
               loop={false}
-              autoplay={false}
+              autoplay={{ delay: 3000 }}
               pagination={{
                 el: ".guest-pagination",
                 clickable: true,

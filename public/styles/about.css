@@ -3,9 +3,22 @@
   height: 175px;
 }
 
+@media (max-width:575px) {
+  .about_banner {
+    height: 140px;
+  }
+}
+
 .about_banner_inner {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+@media (max-width:575px) {
+  .about_banner_inner {
+    padding-top: 35px;
+    padding-bottom: 30px;
+  }
 }
 
 .about_banner_inner h1 {
@@ -14,7 +27,7 @@
 }
 
 .about_hotel {
-  background-color: var(--white);
+  background-color: var(--white) !important;
 }
 
 .about_banner_inner ul {
@@ -75,6 +88,12 @@
   position: relative;
   padding: 50px 0;
   padding-top: 0px;
+}
+
+@media (max-width:575px) {
+  .Features_wrap {
+    padding: 0 0 25px;
+  }
 }
 
 .Features_box {
@@ -203,7 +222,7 @@ section.gray .brand-info .inner .content {
 
 .brand-info .inner .stars {
   margin: 25px 0;
-  
+
 }
 
 .brand-info .inner .stars i {

@@ -179,7 +179,7 @@ export default function GuestTestimonials() {
   if (loading) return null;
 
   return (
-    <section className="guest_wrap">
+    <section className="guest_wrap" >
       <div className="container">
         <div className="sec_title_btn">
           <div>
@@ -188,7 +188,7 @@ export default function GuestTestimonials() {
           </div>
         </div>
 
-        <div className="guest_inner">
+        <div className="guest_inner" style={{position:"relative"}}>
           <div className="guest_slide slide_style_two">
             <Swiper
               modules={[Autoplay, Pagination]}
@@ -211,7 +211,7 @@ export default function GuestTestimonials() {
               breakpoints={{
                 0: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
+                1199: { slidesPerView: 3 },
               }}>
               {testimonials.map((item, index) => (
                 <SwiperSlide key={index}>
